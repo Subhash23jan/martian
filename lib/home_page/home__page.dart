@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:martian/global_variables.dart';
 import 'package:martian/pages/connect_with_people.dart';
+import 'package:martian/pages/daily_agenda.dart';
 import 'package:martian/pages/emrgency_unit.dart';
 import 'package:martian/pages/habitat_panner.dart';
 import 'package:martian/pages/resource_tracker.dart';
+import 'package:martian/pages/weather_report.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -15,14 +18,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black54,
-      appBar:AppBar(
-        backgroundColor:GlobalVariables.secondaryColor,
+      appBar: AppBar(
+        backgroundColor: GlobalVariables.secondaryColor,
         elevation: 15,
         shadowColor: Colors.white,
         centerTitle: false,
-        title:   Text(
+        title: Text(
           "Martian",
           style: GoogleFonts.aBeeZee(
             color: Colors.white,
@@ -32,9 +35,25 @@ class _HomePageState extends State<HomePage> {
           textAlign: TextAlign.center,
         ),
         actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.camera_alt_outlined,color: Colors.white,)),
-          IconButton(onPressed: (){}, icon: const Icon(Icons.search,color: Colors.white,size: 27,)),
-          IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert_outlined,color: Colors.white,)),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.camera_alt_outlined,
+                color: Colors.white,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 27,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.more_vert_outlined,
+                color: Colors.white,
+              )),
         ],
       ),
       body: SingleChildScrollView(
@@ -45,8 +64,13 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children: [
-                const SizedBox(width: 25,),
-                const Text("hii..",style: TextStyle(fontSize: 21,color:Colors.white38),),
+                const SizedBox(
+                  width: 25,
+                ),
+                const Text(
+                  "hii..",
+                  style: TextStyle(fontSize: 21, color: Colors.white38),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
                   child: ShaderMask(
@@ -58,148 +82,142 @@ class _HomePageState extends State<HomePage> {
                         "Subhash",
                         style: GoogleFonts.manrope(
                             color: Colors.white,
-                            fontSize: 35.5
-                            ,fontWeight: FontWeight.w500
-                        ),
+                            fontSize: 35.5,
+                            fontWeight: FontWeight.w500),
                       )),
                 ),
               ],
             ),
             ShaderMask(
                 shaderCallback: (bounds) {
-                  return GlobalVariables.buttonGradient
-                      .createShader(bounds);
+                  return GlobalVariables.buttonGradient.createShader(bounds);
                 },
                 child: Text(
                   "Welcome to Mangal!!",
                   style: GoogleFonts.manrope(
                       color: Colors.white,
-                      fontSize: 15.5
-                      ,fontWeight: FontWeight.w500
-                  ),
+                      fontSize: 15.5,
+                      fontWeight: FontWeight.w500),
                 )),
             const SizedBox(
               height: 25,
             ),
-            GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const EmergencyContact(),)),
-              child: Card(
-                elevation: 45,
-                shadowColor: Colors.blue,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
+            gradientCardSample(),
+            const SizedBox(
+              height: 25,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const EmergencyContact(),
+                  )),
+                  child: Card(
+                    elevation: 45,
+                    shadowColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Container(
+                        height: 100,
+                        width: MediaQuery.sizeOf(context).width * 0.4,
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 44, 102, 150),
+                                  Color.fromARGB(255, 62, 125, 234),
+                                  Color.fromARGB(255, 40, 37, 227)
+                                ],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "emergency",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "Helpline",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )),
+                  ),
                 ),
-                child: Container(
-                    height: 120,
-                    width: MediaQuery.sizeOf(context).width*0.65,
-                    decoration: BoxDecoration(
-                        gradient:  const LinearGradient(
-                            colors: [
-                              Colors.blue,
-                              Colors.cyan,
-                              Colors.blue,
-                              Colors.cyan,
-                              Colors.blue,
-                              Colors.cyan,
-                              Colors.blue,
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter),
-                        borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "emergency",
-                          style: GoogleFonts.manrope(
-                            color: Colors.white,
-                            fontSize: 26,
-
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          "Helpline",
-                          style: GoogleFonts.manrope(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    )
-
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ResourceTrackingScreen(),
+                  )),
+                  child: Card(
+                    elevation: 45,
+                    shadowColor: Colors.yellow.shade100,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Container(
+                        height: 100,
+                        width: MediaQuery.sizeOf(context).width * 0.4,
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 215, 202, 89),
+                                  Color.fromARGB(255, 197, 143, 61),
+                                  Color.fromARGB(255, 234, 148, 36)
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "your",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "Resource Tracker",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )),
+                  ),
                 ),
-              ),
+              ],
             ),
             const SizedBox(
               height: 25,
             ),
             GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  ResourceTrackingScreen(),)),
-              child: Card(
-                elevation: 45,
-                shadowColor: Colors.pink,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
-                ),
-                child: Container(
-                    height: 130,
-                    width: MediaQuery.sizeOf(context).width*0.65,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                            colors: [
-                              Colors.yellow,
-                              Colors.orange,
-                              Colors.orangeAccent
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter),
-                        borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "your",
-                          style: GoogleFonts.manrope(
-                            color: Colors.white,
-                            fontSize: 26,
-
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          "Resource Tracker",
-                          style: GoogleFonts.manrope(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    )
-
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HabitatPlanner(),)),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const HabitatPlanner(),
+              )),
               child: Card(
                 elevation: 45,
                 shadowColor: Colors.lightGreen,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
-                ),
+                    borderRadius: BorderRadius.circular(15)),
                 child: Container(
                     height: 120,
-                    width: MediaQuery.sizeOf(context).width*0.65,
+                    width: MediaQuery.sizeOf(context).width * 0.65,
                     decoration: BoxDecoration(
                         gradient: const LinearGradient(
                             colors: [
@@ -209,8 +227,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter),
-                        borderRadius: BorderRadius.circular(15)
-                    ),
+                        borderRadius: BorderRadius.circular(15)),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -219,7 +236,6 @@ class _HomePageState extends State<HomePage> {
                           style: GoogleFonts.manrope(
                             color: Colors.white,
                             fontSize: 26,
-
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -233,115 +249,214 @@ class _HomePageState extends State<HomePage> {
                           textAlign: TextAlign.center,
                         ),
                       ],
-                    )
-
-                ),
+                    )),
               ),
             ),
             const SizedBox(
               height: 25,
             ),
-            Card(
-              elevation: 45,
-              shadowColor: Colors.cyanAccent,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)
-              ),
-              child: Container(
-                  height: 120,
-                  width: MediaQuery.sizeOf(context).width*0.65,
-                  decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                          colors: [
-                            Colors.cyan,
-                            Colors.cyanAccent,
-                            Colors.cyan
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const DailyAgenda(),
+                  )),
+                  child: Card(
+                    elevation: 45,
+                    shadowColor: Colors.cyanAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Container(
+                        height: 100,
+                        width: MediaQuery.sizeOf(context).width * 0.4,
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                colors: [
+                                  Colors.cyan,
+                                  Colors.cyanAccent,
+                                  Colors.cyan
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "find",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "Daily Tasks",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
                           ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter),
-                      borderRadius: BorderRadius.circular(15)
+                        )),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "find",
-                        style: GoogleFonts.manrope(
-                          color: Colors.white,
-                          fontSize: 26,
-
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        "Daily Tasks",
-                        style: GoogleFonts.manrope(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  )
-
-              ),
+                ),
+                GestureDetector(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Connect(),
+                  )),
+                  child: Card(
+                    elevation: 45,
+                    shadowColor: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Container(
+                        height: 100,
+                        width: MediaQuery.sizeOf(context).width * 0.4,
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [
+                                  Colors.redAccent,
+                                  Colors.redAccent.shade200,
+                                  Colors.pinkAccent
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter),
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "connect",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 13,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              "With People",
+                              style: GoogleFonts.manrope(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 25,
             ),
             GestureDetector(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Connect(),)),
-              child: Card(
-                elevation: 45,
-                shadowColor: Colors.redAccent,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
-                ),
-                child: Container(
-                    height: 120,
-                    width: MediaQuery.sizeOf(context).width*0.65,
-                    decoration: BoxDecoration(
-                        gradient:  LinearGradient(
-                            colors: [
-                              Colors.redAccent,
-                              Colors.redAccent.shade200,
-                              Colors.pinkAccent
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter),
-                        borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "connect",
-                          style: GoogleFonts.manrope(
-                            color: Colors.white,
-                            fontSize: 26,
-
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          "With People",
-                          style: GoogleFonts.manrope(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => WeatherReportPage(),
+              )),
+              child: Container(
+                alignment: Alignment.center,
+                height: 80,
+                decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromARGB(255, 27, 24, 24),
+                        Color.fromARGB(137, 0, 0, 0),
+                        Color.fromARGB(255, 27, 24, 24),
                       ],
-                    )
-
-                ),
+                    ),
+                    borderRadius: BorderRadius.circular(16)),
+                width: MediaQuery.sizeOf(context).width * 0.5,
+                child: ShaderMask(
+                    shaderCallback: (bounds) {
+                      return GlobalVariables.getLineGradient()
+                          .createShader(bounds);
+                    },
+                    child: Text(
+                      "Live Weather Report",
+                      style: GoogleFonts.manrope(
+                          color: Colors.white,
+                          fontSize: 15.5,
+                          fontWeight: FontWeight.w500),
+                    )),
               ),
             ),
-            const SizedBox(height: 25,)
+            const SizedBox(
+              height: 25,
+            )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget gradientCardSample() {
+    return Container(
+      height: 160,
+      width: MediaQuery.sizeOf(context).width * 0.75,
+      padding: const EdgeInsets.all(32),
+      decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF846AFF),
+              Color(0xFF755EE8),
+              Colors.purpleAccent,
+              Colors.amber,
+            ],
+          ),
+          borderRadius: BorderRadius.circular(
+              16)), // Adds a gradient background and rounded corners to the container
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Row(
+                children: [
+                  Text(
+                    'Digital Id',
+                    style: GoogleFonts.aBeeZee(fontSize: 17),
+                  ), // Adds a title to the card
+                  const Spacer(),
+                  Stack(
+                    children: List.generate(
+                      2,
+                      (index) => Container(
+                        margin: EdgeInsets.only(left: (15 * index).toDouble()),
+                        height: 30,
+                        width: 30,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.white54),
+                      ),
+                    ),
+                  ) // Adds a stack of two circular containers to the right of the title
+                ],
+              ),
+              Text(
+                'ID : 4111 7679 8689 9700',
+                style: GoogleFonts.aBeeZee(fontSize: 16),
+              ) // Adds a subtitle to the card
+            ],
+          ),
+          Text('Plan : \$3,000',
+              style: GoogleFonts.aBeeZee(
+                  fontSize: 19,
+                  color:
+                      Colors.white)) // Adds a price to the bottom of the card
+        ],
       ),
     );
   }
